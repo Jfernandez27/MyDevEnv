@@ -1,0 +1,38 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Mon Jun 15 18:22:07.368655 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Mon Jun 15 18:22:07.369440 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Mon Jun 15 18:22:37.540672 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Mon Jun 15 18:32:10.785315 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Mon Jun 15 18:32:10.800799 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Mon Jun 15 18:33:47.160529 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Mon Jun 15 18:35:13.521600 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Mon Jun 15 18:35:13.528105 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Mon Jun 15 18:38:11.965700 2020] [php7:warn] [pid 7] [client 172.19.0.3:34168] PHP Warning:  require(/var/www/html/aptus-7/public/../vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/aptus-7/public/index.php on line 24
+[Mon Jun 15 18:38:11.966221 2020] [php7:error] [pid 7] [client 172.19.0.3:34168] PHP Fatal error:  require(): Failed opening required '/var/www/html/aptus-7/public/../vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/aptus-7/public/index.php on line 24
+[Mon Jun 15 18:38:12.009902 2020] [php7:warn] [pid 9] [client 172.19.0.1:46672] PHP Warning:  require(/var/www/html/aptus-7/public/../vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/aptus-7/public/index.php on line 24
+[Mon Jun 15 18:38:12.010544 2020] [php7:error] [pid 9] [client 172.19.0.1:46672] PHP Fatal error:  require(): Failed opening required '/var/www/html/aptus-7/public/../vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/aptus-7/public/index.php on line 24
+[Mon Jun 15 18:42:14.115115 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Mon Jun 15 18:42:34.007692 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Mon Jun 15 18:42:34.017668 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Mon Jun 15 19:03:40.172628 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Mon Jun 15 20:21:09.796556 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Mon Jun 15 20:21:09.798315 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Mon Jun 15 20:27:10.316389 2020] [autoindex:error] [pid 6] [client 172.27.0.1:41914] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html,index.cgi,index.pl,index.php,index.xhtml,index.htm) found, and server-generated directory index forbidden by Options directive
+[Mon Jun 15 20:28:09.185952 2020] [autoindex:error] [pid 7] [client 172.27.0.1:41926] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html,index.cgi,index.pl,index.php,index.xhtml,index.htm) found, and server-generated directory index forbidden by Options directive
+[Mon Jun 15 21:41:21.673847 2020] [autoindex:error] [pid 10] [client 172.27.0.1:42780] AH01276: Cannot serve directory /var/www/html/laravel/: No matching DirectoryIndex (index.html,index.cgi,index.pl,index.php,index.xhtml,index.htm) found, and server-generated directory index forbidden by Options directive
+[Mon Jun 15 21:49:32.554835 2020] [autoindex:error] [pid 11] [client 172.27.0.1:42794] AH01276: Cannot serve directory /var/www/html/laravel/: No matching DirectoryIndex (index.html,index.cgi,index.pl,index.php,index.xhtml,index.htm) found, and server-generated directory index forbidden by Options directive
+[Mon Jun 15 21:49:34.525575 2020] [autoindex:error] [pid 6] [client 172.27.0.1:42798] AH01276: Cannot serve directory /var/www/html/laravel/: No matching DirectoryIndex (index.html,index.cgi,index.pl,index.php,index.xhtml,index.htm) found, and server-generated directory index forbidden by Options directive
+[Mon Jun 15 21:54:02.383549 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Mon Jun 15 21:54:19.138701 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Mon Jun 15 21:54:19.149861 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Mon Jun 15 21:55:02.298422 2020] [autoindex:error] [pid 8] [client 172.27.0.1:42818] AH01276: Cannot serve directory /var/www/html/laravel/: No matching DirectoryIndex (index.html,index.cgi,index.pl,index.php,index.xhtml,index.htm) found, and server-generated directory index forbidden by Options directive
+[Mon Jun 15 21:55:51.098992 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Tue Jun 16 19:43:34.477682 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Tue Jun 16 19:43:34.481307 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
+[Tue Jun 16 19:48:32.345770 2020] [php7:error] [pid 11] [client 172.27.0.1:42876] script '/var/www/html/test_db.php' not found or unable to stat, referer: http://localhost:8080/

@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+    apache_php:
+        build: "./apache_php/"
+        networks:
+            backend:
+                ipv4_address: 172.27.0.4
+        volumes:
+            - ./apache_php/tmp/sessions:/var/lib/php/sessions
+            - ./apache_php/tmp/log/apache2:/var/log/apache2
+            - ./www:/var/www/html
+        ports:
+            - 8080:80
+        tty: true
+        hostname: apache_php
+        extra_hosts:
+            - "apache_php localhost localhost.localdomain:127.0.0.1"
+    mysql:
+        image: mysql:5.7
+        networks:
+            backend:
+                ipv4_address: 172.27.0.2
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=id3a
+            - TZ=America/Santiago
+        command: mysqld --sql_mode="TRADITIONAL" --character-set-server=utf8mb4 --collation-server=utf8mb4_spanish_ci --innodb-buffer-pool-size=512M --innodb_lru_scan_depth=256
+        volumes:
+            - ./mysql/data:/var/lib/mysql
+            - ./mysql/logs:/var/log/mysql
+            - ./mysql/tmp:/tmp
+        tty: true
+    mariadb:
+        image: mariadb:10.4
+        networks:
+            backend:
+                ipv4_address: 172.27.0.3
+        ports:
+            - 3366:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=id3a
+        restart: always
+        volumes:
+            - ./mariadb/mariadb-data:/var/lib/mysql        
+networks:
+    backend:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.27.0.0/24
