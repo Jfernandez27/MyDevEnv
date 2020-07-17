@@ -58,3 +58,6 @@
 172.27.0.1 - - [16/Jun/2020:19:50:41 -0400] "GET / HTTP/1.1" 200 1726 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"
 172.27.0.1 - - [16/Jun/2020:19:50:56 -0400] "GET / HTTP/1.1" 200 1726 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"
 172.27.0.1 - - [18/Jun/2020:20:10:53 -0400] "GET /favicon.ico HTTP/1.1" 404 490 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36"
+172.27.0.1 - - [17/Jul/2020:03:18:53 -0400] "GET / HTTP/1.1" 200 1719 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+172.27.0.1 - - [17/Jul/2020:03:18:53 -0400] "GET /assets/css/id3a.css HTTP/1.1" 200 507 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"
+172.27.0.1 - - [17/Jul/2020:03:18:53 -0400] "GET /favicon.ico HTTP/1.1" 404 489 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36"

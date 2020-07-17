@@ -36,3 +36,6 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Tue Jun 16 19:43:34.477682 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
 [Tue Jun 16 19:43:34.481307 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
 [Tue Jun 16 19:48:32.345770 2020] [php7:error] [pid 11] [client 172.27.0.1:42876] script '/var/www/html/test_db.php' not found or unable to stat, referer: http://localhost:8080/
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+[Fri Jul 17 03:18:43.508388 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Fri Jul 17 03:18:43.508489 2020] [core:notice] [pid 1] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND'
