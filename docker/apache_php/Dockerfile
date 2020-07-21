@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+FROM ubuntu
+# FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 RUN sed --in-place --regexp-extended "s/(\/\/)(archive\.ubuntu)/\1cl.\2/" /etc/apt/sources.list && \
 	apt-get update && apt-get upgrade --yes
@@ -34,13 +35,13 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 #PHP
 RUN	apt-get update && apt-get upgrade --yes
 RUN apt-get install libapache2-mod-php -y --no-install-recommends
-RUN apt-get install php7.2-mysql -y --no-install-recommends
-RUN apt-get install php7.2-mbstring -y --no-install-recommends
-RUN apt-get install php7.2-curl -y --no-install-recommends
+RUN apt-get install php-mysql -y --no-install-recommends
+RUN apt-get install php-mbstring -y --no-install-recommends
+RUN apt-get install php-curl -y --no-install-recommends
 RUN apt-get install composer -y --no-install-recommends
-RUN apt-get install php7.2-xml -y --no-install-recommends
-RUN apt-get install php7.2-cli -y --no-install-recommends
-RUN apt-get install php7.2-zip -y --no-install-recommends
-COPY php.ini /usr/local/etc/php
+RUN apt-get install php-xml -y --no-install-recommends
+RUN apt-get install php-cli -y --no-install-recommends
+RUN apt-get install php-zip -y --no-install-recommends
+# # COPY php.ini /usr/local/etc/php
 
 CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
