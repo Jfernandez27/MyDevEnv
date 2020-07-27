@@ -42,6 +42,7 @@ RUN apt-get install composer -y --no-install-recommends
 RUN apt-get install php-xml -y --no-install-recommends
 RUN apt-get install php-cli -y --no-install-recommends
 RUN apt-get install php-zip -y --no-install-recommends
+RUN apt-get install php7.4-gd -y --no-install-recommends
 # # COPY php.ini /usr/local/etc/php
 
 CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
