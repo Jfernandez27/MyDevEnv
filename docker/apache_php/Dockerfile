@@ -1,5 +1,4 @@
 FROM ubuntu
-# FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 RUN sed --in-place --regexp-extended "s/(\/\/)(archive\.ubuntu)/\1cl.\2/" /etc/apt/sources.list && \
 	apt-get update && apt-get upgrade --yes
@@ -25,12 +24,12 @@ ENV APACHE_LOG_DIR   /var/log/apache2
 ENV APACHE_PID_FILE  /var/run/apache2/apache2.pid
 ENV APACHE_RUN_DIR   /var/run/apache2
 ENV APACHE_LOCK_DIR  /var/lock/apache2
-ENV APACHE_LOG_DIR   /var/log/apache2 
+ENV APACHE_LOG_DIR   /var/log/apache2
 RUN mkdir -p $APACHE_RUN_DIR
 RUN mkdir -p $APACHE_LOCK_DIR
 RUN mkdir -p $APACHE_LOG_DIR
 RUN a2enmod rewrite
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+# COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #PHP
 RUN	apt-get update && apt-get upgrade --yes
@@ -42,7 +41,9 @@ RUN apt-get install composer -y --no-install-recommends
 RUN apt-get install php-xml -y --no-install-recommends
 RUN apt-get install php-cli -y --no-install-recommends
 RUN apt-get install php-zip -y --no-install-recommends
-RUN apt-get install php7.4-gd -y --no-install-recommends
-# # COPY php.ini /usr/local/etc/php
+RUN apt-get install php-gd -y --no-install-recommends
+
+COPY php.ini /usr/local/etc/php
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]

@@ -1,6 +1,7 @@
-version: "3.7"
+version: "3.8"
 services:
     apache_php:
+        container_name: apache
         build: "./apache_php/"
         networks:
             backend:
@@ -9,7 +10,7 @@ services:
             - ./apache_php/tmp/sessions:/var/lib/php/sessions
             - ./apache_php/tmp/log/apache2:/var/log/apache2
             - ./www:/var/www/html
-            - ./apache_php/php.ini:/etc/php/7.4/apache2/conf.d/php.ini
+            - ./apache_php/php.ini:/etc/php/8.1/apache2/php.ini
         ports:
             - 8080:80
         tty: true
@@ -17,7 +18,8 @@ services:
         extra_hosts:
             - "apache_php localhost localhost.localdomain:127.0.0.1"
     mysql:
-        image: mysql:5.7
+        container_name: mysql
+        image: mysql:latest
         networks:
             backend:
                 ipv4_address: 172.27.0.2
@@ -33,7 +35,8 @@ services:
             - ./mysql/tmp:/tmp
         tty: true
     mariadb:
-        image: mariadb:10.4
+        container_name: mariadb
+        image: mariadb:latest
         networks:
             backend:
                 ipv4_address: 172.27.0.3
@@ -43,7 +46,7 @@ services:
             - MYSQL_ROOT_PASSWORD=id3a
         restart: always
         volumes:
-            - ./mariadb/mariadb-data:/var/lib/mysql        
+            - ./mariadb/mariadb-data:/var/lib/mysql
 networks:
     backend:
         driver: bridge
