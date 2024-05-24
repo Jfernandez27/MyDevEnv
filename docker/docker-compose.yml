@@ -30,9 +30,8 @@ services:
             - TZ=America/Santiago
         command: mysqld --sql_mode="TRADITIONAL" --character-set-server=utf8mb4 --collation-server=utf8mb4_spanish_ci --innodb-buffer-pool-size=512M --innodb_lru_scan_depth=256
         volumes:
-            - ./mysql/data:/var/lib/mysql
+            - mysql_data:/var/lib/mysql
             - ./mysql/logs:/var/log/mysql
-            - ./mysql/tmp:/tmp
         tty: true
     mariadb:
         container_name: mariadb
@@ -46,10 +45,14 @@ services:
             - MYSQL_ROOT_PASSWORD=id3a
         restart: always
         volumes:
-            - ./mariadb/mariadb-data:/var/lib/mysql
+            - mariadb_data:/var/lib/mysql
 networks:
     backend:
         driver: bridge
         ipam:
             config:
                 - subnet: 172.27.0.0/24
+
+volumes:
+    mysql_data:
+    mariadb_data:

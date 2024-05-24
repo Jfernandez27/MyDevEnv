@@ -1,49 +1,59 @@
-FROM ubuntu
-ENV DEBIAN_FRONTEND noninteractive
-RUN sed --in-place --regexp-extended "s/(\/\/)(archive\.ubuntu)/\1cl.\2/" /etc/apt/sources.list && \
-	apt-get update && apt-get upgrade --yes
-RUN apt-get install tzdata -y
-RUN echo "America/Santiago" > /etc/timezone
-RUN rm -f /etc/localtime
-RUN dpkg-reconfigure -f noninteractive tzdata
-RUN apt-get install vim -y --no-install-recommends
-RUN apt-get install git -y --no-install-recommends
-RUN apt-get install net-tools -y --no-install-recommends
-RUN apt-get install iputils-ping -y --no-install-recommends
-RUN apt-get install curl -y --no-install-recommends
-RUN apt-get install unzip -y --no-install-recommends
-RUN apt-get install sendmail -y --no-install-recommends
-RUN apt-get install mailutils -y --no-install-recommends
-RUN apt-get install mutt -y --no-install-recommends
+FROM ubuntu:latest
 
-#APACHE
-RUN apt-get install apache2 -y --no-install-recommends
-ENV APACHE_RUN_USER  www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR   /var/log/apache2
-ENV APACHE_PID_FILE  /var/run/apache2/apache2.pid
-ENV APACHE_RUN_DIR   /var/run/apache2
-ENV APACHE_LOCK_DIR  /var/lock/apache2
-ENV APACHE_LOG_DIR   /var/log/apache2
-RUN mkdir -p $APACHE_RUN_DIR
-RUN mkdir -p $APACHE_LOCK_DIR
-RUN mkdir -p $APACHE_LOG_DIR
-RUN a2enmod rewrite
-# COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+# Configuración de entorno
+ENV DEBIAN_FRONTEND=noninteractive
 
-#PHP
-RUN	apt-get update && apt-get upgrade --yes
-RUN apt-get install libapache2-mod-php -y --no-install-recommends
-RUN apt-get install php-mysql -y --no-install-recommends
-RUN apt-get install php-mbstring -y --no-install-recommends
-RUN apt-get install php-curl -y --no-install-recommends
-RUN apt-get install composer -y --no-install-recommends
-RUN apt-get install php-xml -y --no-install-recommends
-RUN apt-get install php-cli -y --no-install-recommends
-RUN apt-get install php-zip -y --no-install-recommends
-RUN apt-get install php-gd -y --no-install-recommends
+# Actualización y configuración de la zona horaria
+RUN sed -i -E "s/(\/\/)(archive\.ubuntu)/\1cl.\2/" /etc/apt/sources.list && \
+    apt-get update && apt-get upgrade -y && \
+    apt-get install -y tzdata && \
+    echo "America/Santiago" > /etc/timezone && \
+    ln -fs /usr/share/zoneinfo/America/Santiago /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
 
-COPY php.ini /usr/local/etc/php
+# Instalación de utilidades
+RUN apt-get install -y --no-install-recommends \
+    vim \
+    git \
+    net-tools \
+    iputils-ping \
+    curl \
+    unzip \
+    sendmail \
+    mailutils \
+    mutt
+
+# Instalación y configuración de Apache
+RUN apt-get install -y --no-install-recommends apache2 && \
+    a2enmod rewrite && \
+    mkdir -p /var/run/apache2 /var/lock/apache2 /var/log/apache2
+
+# Variables de entorno para Apache
+ENV APACHE_RUN_USER=www-data \
+    APACHE_RUN_GROUP=www-data \
+    APACHE_LOG_DIR=/var/log/apache2 \
+    APACHE_PID_FILE=/var/run/apache2/apache2.pid \
+    APACHE_RUN_DIR=/var/run/apache2 \
+    APACHE_LOCK_DIR=/var/lock/apache2
+
+# Instalación de PHP y extensiones
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libapache2-mod-php \
+    php-mysql \
+    php-mbstring \
+    php-curl \
+    composer \
+    php-xml \
+    php-cli \
+    php-zip \
+    php-gd && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copiar archivos de configuración
+COPY php.ini /usr/local/etc/php/
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
+# Comando por defecto
 CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
