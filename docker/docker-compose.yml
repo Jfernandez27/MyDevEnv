@@ -1,4 +1,4 @@
-version: "3.8"
+# version: "3.9"
 services:
     apache_php:
         container_name: apache
@@ -17,6 +17,7 @@ services:
         hostname: apache_php
         extra_hosts:
             - "apache_php localhost localhost.localdomain:127.0.0.1"
+
     mysql:
         container_name: mysql
         image: mysql:latest
@@ -33,6 +34,7 @@ services:
             - mysql_data:/var/lib/mysql
             - ./mysql/logs:/var/log/mysql
         tty: true
+
     mariadb:
         container_name: mariadb
         image: mariadb:latest
@@ -46,6 +48,34 @@ services:
         restart: always
         volumes:
             - mariadb_data:/var/lib/mysql
+
+    mongodb:
+        container_name: mongodb
+        image: mongo
+        networks:
+            backend:
+                ipv4_address: 172.27.0.5
+        ports:
+            - 27017:27017
+        volumes:
+            - mongodb_data:/data/db
+
+    postgresql:
+        container_name: postgresql
+        image: postgres:latest
+        networks:
+            backend:
+                ipv4_address: 172.27.0.6
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=id3a
+            - POSTGRES_DB=mydatabase
+        volumes:
+            - postgresql_data:/var/lib/postgresql/data
+        tty: true
+
 networks:
     backend:
         driver: bridge
@@ -56,3 +86,5 @@ networks:
 volumes:
     mysql_data:
     mariadb_data:
+    mongodb_data:
+    postgresql_data:
