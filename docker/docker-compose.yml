@@ -1,4 +1,3 @@
-# version: "3.9"
 services:
     apache_php:
         container_name: apache
@@ -62,7 +61,7 @@ services:
 
     postgresql:
         container_name: postgresql
-        image: postgres:latest
+        build: "./postgres_postgis/"
         networks:
             backend:
                 ipv4_address: 172.27.0.6
